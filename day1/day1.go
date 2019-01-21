@@ -8,17 +8,17 @@ import (
 )
 
 type Day struct {
-	captcha int
+	digits int
 }
 
 func New() Day {
 	captcha := RunP1()
 	return Day{
-		captcha: captcha,
+		digits: digits,
 	}
 }
 
-func RunP1() int {
+func RunP1() error {
 	input, err := readFromFileAsString("day1.txt")
 	if err != nil {
 		log.Fatal("could not read file")
@@ -46,7 +46,7 @@ func RunP1() int {
 		captcha += first
 	}
 	fmt.Println(captcha)
-	return captcha
+	return nil
 }
 
 func readFromFileAsString(fileName string) (string, error) {
