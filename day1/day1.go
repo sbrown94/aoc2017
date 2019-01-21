@@ -18,7 +18,7 @@ func New() Day {
 	}
 }
 
-func RunP1() error {
+func (d Day) RunP1() error {
 	input, err := readFromFileAsString("day1.txt")
 	if err != nil {
 		log.Fatal("could not read file")
@@ -46,6 +46,10 @@ func RunP1() error {
 		captcha += first
 	}
 	fmt.Println(captcha)
+	return nil
+}
+
+func (d Day) RunP2() error {
 	return nil
 }
 
