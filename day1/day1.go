@@ -1,4 +1,4 @@
-package main
+package day1
 
 import (
 	"fmt"
@@ -7,10 +7,9 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello")
-	input, err := readFromFileAsString("Day1.txt")
-	if(err != nil) {
-		fmt.Println("could not read file") 
+	input, err := readFromFileAsString("day1.txt")
+	if err != nil {
+		log.Fatal"could not read file") 
 	}
 	store := -1
 	captcha := 0
@@ -18,13 +17,13 @@ func main() {
 	for i, r := range input {
 		if i == 0 {
 			first, err = strconv.Atoi(string(r))
-			if(err != nil) {
-				fmt.Println("rune is not parsable") 
+			if err != nil {
+				log.Fatal("rune is not parsable") 
 			}
 		}
 		d, err := strconv.Atoi(string(r))
-		if(err != nil) {
-			fmt.Println("rune is not parsable") 
+		if err != nil {
+			log.Fatal("rune is not parsable") 
 		}
 		if d == store {
 			captcha += d
