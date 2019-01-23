@@ -2,10 +2,11 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
 
+	"github.com/pkg/errors"
 	"github.com/sbrown94/aoc2017/day1"
+	"github.com/sbrown94/aoc2017/day2"
 )
 
 type day interface {
@@ -15,6 +16,7 @@ type day interface {
 
 var days = []day{
 	day1.New(),
+	day2.New(),
 }
 
 func main() {
@@ -41,7 +43,7 @@ func main() {
 
 func getDay(dayNo int) (day, error) {
 	if dayNo > len(days) {
-		return nil, fmt.Errorf("Day '%d' is not available", dayNo)
+		return nil, errors.Errorf("Day '%d' is not available", dayNo)
 	}
 	return days[dayNo-1], nil
 }

@@ -3,13 +3,15 @@ package common
 import (
 	"io/ioutil"
 	"strconv"
+
+	"github.com/pkg/errors"
 )
 
 // ReadFromFileAsString takes a filename and returns the contents as a string
 func ReadFromFileAsString(fileName string) (string, error) {
 	dat, err := ioutil.ReadFile(fileName)
 	if err != nil {
-		return "", err
+		return "", errors.WithStack(err)
 	}
 	return string(dat), nil
 }
