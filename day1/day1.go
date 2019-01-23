@@ -59,9 +59,6 @@ func (d Day) RunP2() error {
 	jumper := len(numList) / 2
 	total := 0
 	for i, num := range numList {
-		if err != nil {
-			return err
-		}
 		if i+jumper >= len(numList) {
 			jumper -= len(numList)
 		}

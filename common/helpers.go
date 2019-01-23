@@ -22,7 +22,7 @@ func StringToIntSlice(str string) ([]int, error) {
 	for _, c := range str {
 		cI, err := strconv.Atoi(string(c))
 		if err != nil {
-			return nil, err
+			return nil, errors.WithStack(err)
 		}
 		slc = append(slc, cI)
 	}
