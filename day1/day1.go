@@ -2,7 +2,6 @@ package day1
 
 import (
 	"fmt"
-	"log"
 	"strconv"
 
 	"github.com/sbrown94/aoc2017/common"
@@ -19,7 +18,7 @@ func New() Day {
 func (d Day) RunP1() error {
 	input, err := common.ReadFromFileAsString("./day1/day1.txt")
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	store := -1
 	captcha := 0
@@ -70,8 +69,6 @@ func (d Day) RunP2() error {
 			total += num
 		}
 	}
-
 	fmt.Println(total)
-
 	return nil
 }
