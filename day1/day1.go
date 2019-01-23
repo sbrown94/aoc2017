@@ -2,9 +2,10 @@ package day1
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
 	"strconv"
+
+	"github.com/sbrown94/aoc2017/common"
 )
 
 type Day struct {
@@ -14,10 +15,11 @@ func New() Day {
 	return Day{}
 }
 
+// RunP1 Part 1 of the problem
 func (d Day) RunP1() error {
-	input, err := readFromFileAsString("day1/day1.txt")
+	input, err := common.ReadFromFileAsString("./day1/day1.txt")
 	if err != nil {
-		log.Fatal("could not read file")
+		log.Fatal(err)
 	}
 	store := -1
 	captcha := 0
@@ -47,13 +49,4 @@ func (d Day) RunP1() error {
 
 func (d Day) RunP2() error {
 	return nil
-}
-
-func readFromFileAsString(fileName string) (string, error) {
-	dat, err := ioutil.ReadFile(fileName)
-	if err != nil {
-		fmt.Println(err)
-		return "", err
-	}
-	return string(dat), nil
 }

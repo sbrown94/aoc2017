@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+
 	"github.com/sbrown94/aoc2017/day1"
 )
 
@@ -12,13 +13,13 @@ type day interface {
 	RunP2() error
 }
 
-var days = []day {
+var days = []day{
 	day1.New(),
 }
 
 func main() {
 	var dayNo = flag.Int("day", 0, "Please enter a day to run")
-	var part = flag.Bool("partTwo", false, "Run the second part of the challenge")
+	var part = flag.Bool("p2", false, "Run the second part of the challenge")
 	flag.Parse()
 
 	if *dayNo == 0 {
@@ -44,8 +45,8 @@ func getDay(dayNo int) (day, error) {
 	return days[dayNo-1], nil
 }
 
-func executePart(day day, partTwo bool) error {
-	if partTwo {
+func executePart(day day, p2 bool) error {
+	if p2 {
 		return day.RunP2()
 	}
 	return day.RunP1()
