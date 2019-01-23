@@ -28,12 +28,12 @@ func (d Day) RunP1() error {
 		if i == 0 {
 			first, err = strconv.Atoi(string(r))
 			if err != nil {
-				log.Fatal("rune is not parsable")
+				return err
 			}
 		}
 		d, err := strconv.Atoi(string(r))
 		if err != nil {
-			log.Fatal("rune is not parsable")
+			return err
 		}
 		if d == store {
 			captcha += d
@@ -51,21 +51,23 @@ func (d Day) RunP1() error {
 func (d Day) RunP2() error {
 	input, err := common.ReadFromFileAsString("./day1/day1.txt")
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
-	doubleInput := input + input
+	numList, err := common.StringToIntSlice(input)
+	if err != nil {
+		return err
+	}
+	jumper := len(numList) / 2
 	total := 0
-	for i, r := range input {
-		val, err := strconv.Atoi(string(doubleInput[(i + (len(input) / 2))]))
+	for i, num := range numList {
 		if err != nil {
 			return err
 		}
-		rangeVal, err := strconv.Atoi(string(r))
-		if err != nil {
-			return err
+		if i+jumper >= len(numList) {
+			jumper -= len(numList)
 		}
-		if rangeVal == val {
-			total += val
+		if num == numList[i+jumper] {
+			total += num
 		}
 	}
 

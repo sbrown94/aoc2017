@@ -18,6 +18,7 @@ var days = []day{
 }
 
 func main() {
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
 	var dayNo = flag.Int("day", 0, "Please enter a day to run")
 	var part = flag.Bool("p2", false, "Run the second part of the challenge")
 	flag.Parse()
