@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/pkg/errors"
 	"github.com/sbrown94/aoc2017/common"
 )
 
@@ -27,12 +28,12 @@ func (d Day) RunP1() error {
 		if i == 0 {
 			first, err = strconv.Atoi(string(r))
 			if err != nil {
-				return err
+				return errors.WithStack(err)
 			}
 		}
 		d, err := strconv.Atoi(string(r))
 		if err != nil {
-			return err
+			return errors.WithStack(err)
 		}
 		if d == store {
 			captcha += d
